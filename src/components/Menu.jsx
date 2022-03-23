@@ -13,7 +13,7 @@ const Menu = () => (
             </Link>
             <Card.Body className="text-center">
               <Card.Title>{pasta.name}</Card.Title>
-              <Card.Text>
+              <div>
                 <div>{pasta.description}</div>
                 <div>
                   <Badge variant="warning">{pasta.label}</Badge>
@@ -21,7 +21,7 @@ const Menu = () => (
                 <div>
                   <Badge variant="danger">{pasta.price}$</Badge>
                 </div>
-              </Card.Text>
+              </div>
             </Card.Body>
           </Card>
         </Col>

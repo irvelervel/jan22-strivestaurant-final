@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReservationComponent from "./components/ReservationComponent";
 import NotFound from "./components/NotFound";
 import Menu from "./components/Menu";
+import DishDetails from "./components/DishDetails";
+import HocComponent from "./components/HocComponent";
 
 function App() {
   return (
@@ -22,6 +24,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/reservations" element={<ReservationComponent />} />
         <Route path="/menu" element={<Menu />} />
+        {/* -!!!- the one below is a DYNAMIC ROUTE*/}
+        {/* it contains an argument, I called it 'pastaId' */}
+        {/* whatever value of pastaId will be a valid match for <DishDetails /> */}
+        {/* /details/0 for example is a valid match for <DishDetails /> */}
+        <Route path="/details/:pastaId" element={<DishDetails />} />
+        {/* HOC component testing */}
+        <Route path="/hoc" element={<HocComponent testProp="test!" />} />
         <Route path="*" element={<NotFound />} />
         {/* a path of "*" will load on any unhandled route */}
       </Routes>
