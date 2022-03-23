@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ReservationComponent from "./components/ReservationComponent";
 import NotFound from "./components/NotFound";
+import Menu from "./components/Menu";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         {/* <div>HELLO</div> <-- you cannot load a div into Routes! */}
         <Route path="/" element={<Home />} />
         <Route path="/reservations" element={<ReservationComponent />} />
+        <Route path="/menu" element={<Menu />} />
         <Route path="*" element={<NotFound />} />
         {/* a path of "*" will load on any unhandled route */}
       </Routes>

@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 // name <-- string
 // phone <-- string || number
@@ -34,6 +35,8 @@ const ReservationForm = () => {
     dateTime: "",
     specialRequests: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (fieldToUpdate, value) => {
     // console.log("FIELDTOUPDATE", fieldToUpdate);
@@ -114,6 +117,9 @@ const ReservationForm = () => {
       if (response.ok) {
         alert("reservation saved!");
         emptyForm();
+        // what if I want to be redirected home?
+        // you'll just use navigate
+        navigate("/");
       } else {
         alert("something went wrong!");
       }

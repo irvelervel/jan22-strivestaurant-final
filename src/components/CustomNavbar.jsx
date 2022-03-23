@@ -1,5 +1,5 @@
-import { Navbar, Nav } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Navbar, Nav, Button, Breadcrumb } from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // I'd like to add a class of "active" to the current nav-link I'm navigating to
 // how can I know which URL is currently sitting in the address bar?
@@ -11,6 +11,9 @@ const CustomNavbar = (props) => {
   console.log("location", location);
   // location is an object filled with useful properties about your current location
   // location.pathname is a very common property, it will give you the current URL
+
+  const navigate = useNavigate();
+  // navigate is a function!
 
   return (
     <Navbar
@@ -26,7 +29,26 @@ const CustomNavbar = (props) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="#menu">Menu</Nav.Link>
+          {/* <Breadcrumb>
+            <li className="breadcrumb-item">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to="/menu">Menu</Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to="/reservations">Reservations</Link>
+            </li>
+          </Breadcrumb> */}
+          <Link to="/menu">
+            <div
+              className={
+                location.pathname === "/menu" ? "nav-link active" : "nav-link"
+              }
+            >
+              Menu
+            </div>
+          </Link>
           <Link to="/reservations">
             {/* Nav.Link from react-bootstrap is ALREADY an anchor tag <a /> */}
             {/* wrapping it with a Link, which ALSO renders an anchor tag, won't work */}
@@ -57,6 +79,9 @@ const CustomNavbar = (props) => {
             </div>
           </Link>
         </Nav>
+        <Button variant="success" onClick={() => navigate("/")}>
+          BRING ME HOME!
+        </Button>
       </Navbar.Collapse>
     </Navbar>
   );
